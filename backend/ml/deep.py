@@ -10,6 +10,7 @@ missing, the app falls back to the classic models in ml.train_checkers.
 """
 from __future__ import annotations
 
+import io
 import re
 from pathlib import Path
 
@@ -19,6 +20,9 @@ from torch import nn
 
 MODELS = Path(__file__).resolve().parents[1] / "models"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if DEVICE.type == "cpu":
+    torch.set_num_threads(2)  # each CPU thread adds working memory; small hosts have 2 cores anyway
+OCR_MAX_SIDE = 1280
 
 # ------------------------------------------------------------------ messages
 MSG_BASE = "distilbert-base-uncased"
@@ -156,5 +160,10 @@ class Deep:
         if self.ocr is None:
             import easyocr
             self.ocr = easyocr.Reader(["en"], gpu=DEVICE.type == "cuda", verbose=False)
-        lines = self.ocr.readtext(image_bytes, detail=0, paragraph=True)
+        # Full-size screenshots (e.g. 2880x1800) push EasyOCR past 2 GB of memory, which gets the
+        # app killed on small hosts. 1280 px on the long side still reads normal screen text.
+        from PIL import Image
+        img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        img.thumbnail((OCR_MAX_SIDE, OCR_MAX_SIDE))
+        lines = self.ocr.readtext(np.asarray(img), detail=0, paragraph=True, canvas_size=OCR_MAX_SIDE, batch_size=1)
         return "\n".join(lines).strip()
