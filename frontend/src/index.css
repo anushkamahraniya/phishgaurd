@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --color-ink: #2D3142;      /* charcoal: text, sidebar, primary buttons */
+  --color-muted: #6B7080;
+  --color-line: #E4E6EB;
+  --color-page: #F5F6F8;
+  --color-high: #C04C36;     /* crimson: high risk, wrong answers */
+  --color-high-soft: #F8E7E3;
+  --color-mid: #E6A65D;      /* amber: medium risk, watch */
+  --color-mid-soft: #FBF0E2;
+  --color-mid-ink: #9A5B14;
+  --color-low: #40814B;      /* olive green: safe, correct answers */
+  --color-low-soft: #E5F0E6;
+}
+
+:root { color-scheme: light; }
+body { background: var(--color-page); color: var(--color-ink); }
+.tabular { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+
+@keyframes wave { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+.wave-bar { transform-origin: center; animation: wave 0.9s ease-in-out infinite; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.animate-fade-in { animation: fade-in .25s ease-out; }
+@media (prefers-reduced-motion: reduce) { .wave-bar, .animate-fade-in, .animate-spin { animation: none; } }
+
+.recharts-tooltip-cursor { fill: rgba(45, 49, 66, 0.06); }

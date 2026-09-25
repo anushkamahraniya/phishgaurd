@@ -1,0 +1,123 @@
+{
+  "links": {
+    "dataset": "Kaggle sid321axn/malicious-urls-dataset + links read from QR images",
+    "n_train": 560323,
+    "test": {
+      "n_test": 130239,
+      "accuracy": 0.9532,
+      "precision": 0.9387,
+      "recall": 0.9238,
+      "roc_auc": 0.99
+    }
+  },
+  "qr": {
+    "dataset": "Kaggle samahsadiq/benign-and-malicious-qr-codes",
+    "images_tried": 2000,
+    "read_ok": 0.9835,
+    "test": {
+      "n_test": 1967,
+      "accuracy": 0.9019,
+      "precision": 0.9574,
+      "recall": 0.8419,
+      "roc_auc": 0.9736
+    }
+  },
+  "messages": {
+    "dataset": "Kaggle subhajournal/phishingemails + uciml/sms-spam-collection-dataset",
+    "n_train": 19362,
+    "test": {
+      "n_test": 4841,
+      "accuracy": 0.9653,
+      "precision": 0.9484,
+      "recall": 0.9472,
+      "roc_auc": 0.9944
+    }
+  },
+  "voices": {
+    "dataset": "Kaggle birdy654/deep-voice-deepfake-voice-recognition",
+    "n_train": 9422,
+    "test": {
+      "n_test": 2356,
+      "accuracy": 0.9953,
+      "precision": 0.9958,
+      "recall": 0.9949,
+      "roc_auc": 0.9999
+    },
+    "note": "1-second windows from 8 public speakers; random split, so real-world accuracy will be lower."
+  },
+  "deep_messages": {
+    "model": "DistilBERT (distilbert-base-uncased) fine-tuned",
+    "n_train": 18393,
+    "epochs": 2,
+    "test": {
+      "n_test": 4841,
+      "accuracy": 0.9752,
+      "precision": 0.9499,
+      "recall": 0.977,
+      "roc_auc": 0.9971
+    },
+    "minutes": 8.7
+  },
+  "deep_screens": {
+    "model": "EfficientNet-B0 (ImageNet) fine-tuned",
+    "dataset": "Kaggle rohithreddyt/phishing-and-legit-website-screenshots-dataset",
+    "n_train": 2030,
+    "epochs": 6,
+    "test": {
+      "n_test": 408,
+      "accuracy": 0.9069,
+      "precision": 0.912,
+      "recall": 0.912,
+      "roc_auc": 0.9667
+    },
+    "minutes": 11.7
+  },
+  "ocr_sms_screens": {
+    "reader": "EasyOCR (English)",
+    "dataset": "Kaggle tapakah68/spam-text-messages-dataset",
+    "images": 25,
+    "words_recovered": 0.8894,
+    "verdicts": {
+      "fraud": 23,
+      "careful": 0,
+      "safe": 2,
+      "unknown": 0
+    },
+    "note": "These are marketing spam, not all scams, so verdicts are shown but not scored."
+  },
+  "deep_links": {
+    "model": "Character CNN (widths 3/5/7, 256 filters each)",
+    "n_train": 549116,
+    "epochs": 4,
+    "test": {
+      "n_test": 130239,
+      "accuracy": 0.9468,
+      "precision": 0.9301,
+      "recall": 0.9134,
+      "roc_auc": 0.9881
+    },
+    "qr_test": {
+      "n_test": 1967,
+      "accuracy": 0.88,
+      "precision": 0.9341,
+      "recall": 0.8186,
+      "roc_auc": 0.962
+    },
+    "minutes": 7.3
+  },
+  "app_screenshots_end_to_end": {
+    "images": 408,
+    "phishing_caught": 0.912,
+    "real_marked_safe": 0.8646,
+    "real_marked_scam": 0.0625,
+    "breakdown": {
+      "phish->fraud": 186,
+      "phish->careful": 11,
+      "phish->safe": 19,
+      "real->fraud": 12,
+      "real->careful": 14,
+      "real->safe": 166
+    },
+    "unreadable": 0
+  }
+}

@@ -1,0 +1,19 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+numpy>=1.26,<2.2
+pandas==2.2.3
+scikit-learn>=1.4,<1.7
+shap>=0.46
+joblib>=1.3
+opencv-python-headless>=4.9
+qrcode[pil]>=7.4
+librosa>=0.10
+soundfile>=0.12
+kaggle>=1.6
+# Optional GPU models (the app falls back to the classic models without them).
+# For an NVIDIA RTX 50-series GPU install torch/torchvision from https://download.pytorch.org/whl/cu128
+torch>=2.7
+torchvision>=0.22
+transformers>=4.44
+easyocr>=1.7

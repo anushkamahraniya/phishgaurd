@@ -1,0 +1,14 @@
+# Big or private files that must not go to GitHub
+backend/.venv/
+frontend/node_modules/
+backend/data/kaggle/
+backend/data/state/
+backend/data/*.log
+backend/models/deep_messages/
+backend/models/deep_links.pt
+_backup_old_ui/
+test_files/
+deploy/
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
