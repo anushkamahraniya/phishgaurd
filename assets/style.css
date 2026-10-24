@@ -81,3 +81,38 @@
   .st-key-hero_card { transform: none; }
   .st-key-cta { padding: 36px 20px; }
 }
+
+/* Gentle fade-up when the landing page loads */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.st-key-hero, .st-key-stats, [class*="st-key-feat_"] { animation: rise 0.5s ease both; }
+.st-key-hero_card { animation: rise 0.7s 0.15s ease both; }
+
+/* Icons sit on a soft tile */
+[class*="st-key-feat_"] h2,
+[class*="st-key-sign_"] h2 {
+  width: 56px; height: 56px; border-radius: 16px; background: #F5F6F8;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+}
+
+/* Live numbers: bold, with "Need help now" in red */
+[class*="st-key-stat_"] {
+  background: #FFFFFF; border: 1px solid #E4E6EB; border-radius: 20px; padding: 18px 24px;
+  box-shadow: 0 6px 18px rgba(45, 49, 66, 0.06);
+}
+[class*="st-key-stat_"] [data-testid="stMetricValue"] { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+.st-key-stat_help [data-testid="stMetricValue"] { color: #C04C36; }
+
+/* Scam checker: big result card, coloured by answer */
+[class*="st-key-verdict_"] {
+  border-radius: 22px; padding: 28px 32px; border: 1px solid; border-left-width: 10px;
+  animation: rise 0.35s ease both;
+}
+[class*="st-key-verdict_"] h2 { font-size: 2rem; }
+.st-key-verdict_fraud { background: #FBEDEA; border-color: #C04C36; }
+.st-key-verdict_careful { background: #FDF4E8; border-color: #E6A65D; }
+.st-key-verdict_safe { background: #ECF5ED; border-color: #40814B; }
+.st-key-verdict_unknown { background: #F5F6F8; border-color: #6B7080; }
+
+[class*="st-key-sign_"] {
+  background: #FFFFFF; border: 1px solid #E4E6EB; border-radius: 20px; padding: 22px; min-width: 220px;
+}

@@ -3,7 +3,7 @@ import streamlit as st
 from phishguard_ui import engine, go
 
 FEATURES = [
-    ("check", ":red[:material/gpp_bad:]", "Is it a scam?", "Paste a link or message, or upload a QR code. Get a clear answer.",
+    ("check", ":red[:material/gpp_bad:]", "Is it a scam?", "Paste a link, message or QR code. Get a clear answer.",
      "app_pages/check.py"),
     ("quiz", ":orange[:material/phishing:]", "Spot the phish", "A short quiz with real-looking fakes. Learn the signs fast.",
      "app_pages/quiz.py"),
@@ -74,6 +74,7 @@ st.caption("PhishGuard · All tests use safe, fake messages.", text_alignment="c
 # ------------------------------------------------------- live numbers (slow)
 k = engine().summary_numbers()
 with stats:
-    st.metric("People tested", f"{k['staff']:,}", border=True)
-    st.metric("Need help now", k["high_risk"], border=True)
-    st.metric("Scam types checked", "4", help="Emails, links, QR codes and phone calls", border=True)
+    for key, label, value in [("people", "People tested", f"{k['staff']:,}"), ("help", "Need help now", k["high_risk"]),
+                              ("types", "Scam types checked", "4")]:
+        with st.container(key=f"stat_{key}"):
+            st.metric(label, value)

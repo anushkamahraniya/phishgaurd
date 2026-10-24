@@ -9,13 +9,24 @@ EXAMPLES = {
     "Scam link": "http://paypa1-account-verify.com/signin",
     "Normal text": "Hey, are we still on for lunch tomorrow at 1? Let me know.",
 }
-BOX = {"fraud": (st.error, ":material/gpp_bad:"), "careful": (st.warning, ":material/warning:"),
-       "safe": (st.success, ":material/verified_user:"), "unknown": (st.info, ":material/help:")}
+LOOK = {"fraud": ("red", ":material/gpp_bad:"), "careful": ("orange", ":material/warning:"),
+        "safe": ("green", ":material/verified_user:"), "unknown": ("gray", ":material/help:")}
+SIGNS = [
+    (":material/timer:", "Rushes you", "“Act now”, “within 24 hours”, “account locked”."),
+    (":material/link_off:", "Odd link", "Misspelt names, strange endings like .top or .xyz."),
+    (":material/payments:", "Wants money or passwords", "Real companies never ask for these by message."),
+]
 
 
 def show(result: dict):
-    box, icon = BOX.get(result["verdict"], BOX["unknown"])
-    box(f"### {result['title']}\n" + "\n".join(f"- {r}" for r in result["reasons"]), icon=icon)
+    verdict = result["verdict"] if result["verdict"] in LOOK else "unknown"
+    color, icon = LOOK[verdict]
+    with st.container(key=f"verdict_{verdict}"):
+        with st.container(horizontal=True, vertical_alignment="center"):
+            st.markdown(f"# :{color}[{icon}]", width="content")
+            st.markdown(f"## {result['title']}")
+        for r in result["reasons"]:
+            st.markdown(f":{color}[:material/chevron_right:] {r}")
 
 
 def use_example(text: str):
@@ -49,3 +60,10 @@ with st.container(border=True):
 
 if "check_result" in st.session_state:
     show(st.session_state.check_result)
+else:
+    st.subheader("Signs of a scam")
+    with st.container(horizontal=True, gap="medium"):
+        for i, (icon, title, blurb) in enumerate(SIGNS):
+            with st.container(key=f"sign_{i}", height="stretch"):
+                st.markdown(f"## :red[{icon}]")
+                st.markdown(f"**{title}**  \n:gray[{blurb}]")
