@@ -12,7 +12,11 @@ greenColor = "#40814B"
 grayColor = "#6B7080"
 chartCategoricalColors = ["#2D3142", "#C04C36", "#E6A65D", "#40814B"]
 font = "'IBM Plex Sans':https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-baseRadius = "medium"
+headingFont = "'Plus Jakarta Sans':https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+headingFontWeights = [800, 700, 700, 600, 600, 600]
+baseRadius = "large"
+buttonRadius = "full"
+linkUnderline = false
 showWidgetBorder = true
 
 [server]

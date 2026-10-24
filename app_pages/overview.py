@@ -9,7 +9,7 @@ from phishguard_ui import MOD, ONE, engine, go, risk_badge
 data = engine().dashboard()
 k = data["kpis"]
 
-st.title("Overview")
+st.title("Overview", icon=":material/dashboard:")
 st.caption(f"{k['staff']:,} people tested with safe, fake phishing messages")
 
 with st.container(horizontal=True):

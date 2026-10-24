@@ -23,7 +23,7 @@ def use_example(text: str):
     st.session_state.check_result = checker().check_text(text)
 
 
-st.title("Is it a scam?")
+st.title("Is it a scam?", icon=":material/search_check:")
 st.caption("Paste a link or message, or upload a QR code or screenshot.")
 
 with st.container(border=True):

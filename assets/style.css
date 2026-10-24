@@ -1,0 +1,83 @@
+/* Landing page styling. Only targets keyed containers (.st-key-*), so other pages keep the native theme. */
+
+/* Hero: dark charcoal banner with a warm amber glow */
+.st-key-hero {
+  background:
+    radial-gradient(circle at 88% 15%, rgba(230, 166, 93, 0.35), transparent 45%),
+    radial-gradient(circle at 5% 100%, rgba(192, 76, 54, 0.25), transparent 40%),
+    linear-gradient(135deg, #2D3142 0%, #1E2130 100%);
+  border-radius: 28px;
+  padding: 64px 56px;
+}
+.st-key-hero h1 {
+  color: #FFFFFF;
+  font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.st-key-hero p { color: rgba(255, 255, 255, 0.82); font-size: 1.15rem; }
+
+.st-key-hero_go button,
+.st-key-cta_go button {
+  background: #E6A65D;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  box-shadow: 0 8px 20px rgba(230, 166, 93, 0.35);
+}
+.st-key-hero_go button p,
+.st-key-cta_go button p { color: #2D3142; font-weight: 700; }
+.st-key-hero_go button:hover,
+.st-key-cta_go button:hover { background: #F0B877; transform: translateY(-1px); }
+
+.st-key-hero_quiz button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.7rem 1.4rem;
+}
+.st-key-hero_quiz button p { color: #FFFFFF; font-weight: 600; }
+.st-key-hero_quiz button:hover { border-color: #FFFFFF; background: rgba(255, 255, 255, 0.08); }
+
+/* The example message card floating in the hero */
+.st-key-hero_card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  transform: rotate(-1.5deg);
+}
+.st-key-hero_card p { color: #2D3142; font-size: 1rem; }
+
+/* Live numbers strip pulled up under the hero */
+.st-key-stats { margin-top: -8px; }
+
+/* Feature and step cards: soft cards that lift on hover */
+[class*="st-key-feat_"],
+[class*="st-key-step_"] {
+  background: #FFFFFF;
+  border: 1px solid #E4E6EB;
+  border-radius: 20px;
+  padding: 26px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  min-width: 220px;
+}
+[class*="st-key-feat_"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(45, 49, 66, 0.12);
+  border-color: #E6A65D;
+}
+[class*="st-key-step_"] { background: #F5F6F8; border-color: transparent; }
+
+/* Closing call to action */
+.st-key-cta {
+  background: linear-gradient(135deg, #C04C36 0%, #9E3A28 100%);
+  border-radius: 28px;
+  padding: 48px 32px;
+}
+.st-key-cta h2 { color: #FFFFFF; }
+.st-key-cta p { color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; }
+
+@media (max-width: 640px) {
+  .st-key-hero { padding: 36px 22px; border-radius: 20px; }
+  .st-key-hero_card { transform: none; }
+  .st-key-cta { padding: 36px 20px; }
+}

@@ -7,7 +7,7 @@ from phishguard_ui import LEVEL, course, engine, level_of, pct, person_picker, r
 
 RIGHT, WRONG = 10, -5
 
-st.title("Spot the phish")
+st.title("Spot the phish", icon=":material/phishing:")
 emp_id = person_picker("Taking the quiz as")
 
 quiz = st.session_state.get("quiz")

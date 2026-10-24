@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="40" viewBox="0 0 168 40">
+  <path d="M18 3 L32 8 V19 C32 28 26 34 18 37 C10 34 4 28 4 19 V8 Z" fill="#2D3142"/>
+  <path d="M11.5 20 L16 24.5 L25 15" stroke="#E6A65D" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="41" y="27" font-family="'Plus Jakarta Sans', 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="800" fill="#2D3142">Phish<tspan fill="#C04C36">Guard</tspan></text>
+</svg>

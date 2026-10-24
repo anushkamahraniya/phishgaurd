@@ -56,9 +56,11 @@ MONOTONIC = {
 }
 
 
+# Kept small and well-regularised: with 300 trees the model memorised its training rows and
+# scored most people at ~0% or ~99%, which looked broken on the People page.
 def make_risk_model():
     return HistGradientBoostingClassifier(
-        max_iter=300, learning_rate=0.05, max_depth=3, min_samples_leaf=15, l2_regularization=1.0,
+        max_iter=80, learning_rate=0.05, max_depth=3, min_samples_leaf=50, l2_regularization=10.0,
         monotonic_cst=[MONOTONIC[c] for c in EMP_COLS], random_state=SEED)
 
 
@@ -112,7 +114,7 @@ def train_risk_model():
 
     return {
         "name": "Employee click-risk model",
-        "algorithm": "Gradient-boosted decision trees with monotonic constraints (scikit-learn HistGradientBoosting, 300 trees, depth 3)",
+        "algorithm": "Gradient-boosted decision trees with monotonic constraints (scikit-learn HistGradientBoosting, 80 trees, depth 3)",
         "monotonic_constraints": MONOTONIC,
         "target": "Clicks the next phishing simulation",
         "features": [{"feature": c, "label": EMP_LABELS[c]} for c in EMP_COLS],

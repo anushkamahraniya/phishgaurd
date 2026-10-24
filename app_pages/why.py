@@ -2,7 +2,7 @@ import streamlit as st
 
 from phishguard_ui import MOD, course, engine, go, level_of, pct, person_picker, plan_step, reason, risk_badge
 
-st.title("Why at risk?")
+st.title("Why at risk?", icon=":material/help:")
 emp_id = person_picker("Pick a person")
 
 e = engine().explain_employee(emp_id)

@@ -5,7 +5,7 @@ from phishguard_ui import LEVEL, MOD, engine, go, pct
 
 FILTERS = {"Everyone": "All", "Needs attention": "Attention", "High risk": "High", "Watch": "Medium", "Safe": "Low"}
 
-st.title("People")
+st.title("People", icon=":material/group:")
 
 with st.container(horizontal=True, vertical_alignment="bottom"):
     q = st.text_input("Search", placeholder="Search by name…", label_visibility="collapsed", width=260)
@@ -30,7 +30,8 @@ df = pd.DataFrame([{
 pick = st.dataframe(
     df, hide_index=True, on_select="rerun", selection_mode="single-row", height=520,
     column_order=["Name", "Department", "Risk", "Level", "Weakest spot", "Training"],
-    column_config={"Risk": st.column_config.ProgressColumn("Risk", min_value=0, max_value=100, format="%d%%")},
+    column_config={"Risk": st.column_config.ProgressColumn("Risk", min_value=0, max_value=100, format="%d%%",
+                                                    color="auto-inverse")},
 )
 
 sel = pick.selection.rows
